@@ -1,0 +1,14 @@
+.ant-menu-item {
+  margin: 0 10px !important;
+  width: calc(100% - 20px) !important;
+  padding-left: 24px !important;
+  border-radius: 40px;
+}
+
+.ant-menu-inline-collapsed > .ant-menu-item {
+  padding: 0 22px !important;
+}
+
+.ant-menu-item::after {
+  border-right: none !important;
+}
