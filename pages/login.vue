@@ -1,6 +1,6 @@
 <template lang="pug">
   .container
-    a-card.login-card(title="登录到微哨农场")
+    a-card.login-card(title="登录到Flightening")
       Logo(style="max-width: 50%; margin-bottom: 50px")
       a-form.login-form(:model="formState")
         a-form-item(ref="username" name="username")
@@ -42,13 +42,12 @@ export default {
   },
   head() {
     return {
-      title: 'WhistleFarm - 登陆',
+      title: 'Flightening - 登陆',
     }
   },
   mounted() {
     if (this.$auth.loggedIn) {
-      // TODO
-      // this.$router.push('/admin')
+      this.$router.push('/home')
     }
   },
   methods: {

@@ -44,7 +44,8 @@ export default {
       this.cities = res.data.result
     })
     this.$axios.get('http://localhost:8080/v1/user/me').then((res) => {
-      console.log(res.data)
+      console.log(res.msg)
+      console.log('1111')
     })
   },
   methods: {
