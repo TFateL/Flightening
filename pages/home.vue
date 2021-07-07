@@ -5,32 +5,31 @@
     a-card.searchMain
       .serchLine
         a-row()
-          a-col(:span="8") 出发地点
+          a-col(:span="2")
             a-select.origin-city(show-search
-                                placeholder="Select a person"
-                                option-filter-prop="children"
-                                :filter-option="filterOption"
-                                @focus="handleFocus"
-                                @blur="handleBlur"
-                                @change="handleChange"
-                                )
+                                 placeholder="出发"
+                                 option-filter-prop="children"
+                                 :filter-option="filterOption"
+                                 @focus="handleFocus"
+                                 @blur="handleBlur"
+                                 @change="handleChange")
               a-select-option(v-for="i in this.cities" :key="i.id" :value="i.name") {{ i.name }}
           a-col(:span="1")
             h1.exchange 到达
-          a-col(:span="8") 达到地点
+          a-col(:span="2")
             a-select.dest-city(show-search 
-                              placeholder="Select a person"
-                              option-filter-prop="children"
-                              :filter-option="filterOption"
-                              @focus="handleFocus"
-                              @blur="handleBlur"
-                              @change="handleChange"
-                              )
+                               placeholder="到达"
+                               option-filter-prop="children"
+                               :filter-option="filterOption"
+                               @focus="handleFocus"
+                               @blur="handleBlur"
+                               @change="handleChange")
               a-select-option(v-for="i in this.cities" :key="i.id" :value="i.name") {{ i.name }}
-      .timeSelect
-        a-date-picker(@change="onChange")
-          a-icon(slot="suffixIcon" type="simle")
-      a-button.serchButton(type="primay" @click="gotoShifts") 搜索
+          a-col(:span="2")
+            a-date-picker(@change="onChange" placeholder="出发日期")
+              a-icon(slot="suffixIcon" type="simle")
+          a-col(:span="2")
+            a-button.serchButton(type="primay" @click="gotoShifts()") 搜索
     //- Footer
 </template>
 
@@ -39,6 +38,12 @@
 // import { MainLayout } from '@layouts/MainLayout'
 // import { Footer } from '@components/Footer'
 export default {
+  props: {
+    pos: {
+      origin: '',
+      dest: '',
+    },
+  },
   data() {
     return {
       cities: [],
@@ -48,6 +53,9 @@ export default {
         email: '',
       },
     }
+  },
+  created() {
+    this.$axios.get('http://localhost:3000/home' + this.pos).then((res) => {})
   },
   mounted() {
     this.$axios.get('http://localhost:8080/v1/airline/cities').then((res) => {
@@ -61,7 +69,7 @@ export default {
   },
   methods: {
     gotoShifts() {
-      this.$router.push('/shifts')
+      this.$router.push('/shiftsInfo')
     },
     filterOption(input, option) {
       return option.componentOptions.children[0].text.includes(input)
@@ -79,6 +87,7 @@ export default {
 .serchLine {
   width: 100%;
   margin: 0 auto;
+  flex: 50%;
 }
 .exchange {
   font-size: 25px;
