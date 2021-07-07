@@ -64,15 +64,11 @@ export default {
         },
         endpoints: {
           login: {
-            url: 'https://localhost:8080/auth/login',
+            url: 'https://localhost:8080/v1/auth/signin',
             method: 'post',
           },
           logout: false,
-          // user: {
-          //   url: 'https://localhost:8080/auth/me',
-          //   property: false,
-          //   method: 'get',
-          // },
+          user: { url: '/v1/user/me', method: 'get' },
         },
       },
     },

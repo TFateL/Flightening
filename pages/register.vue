@@ -35,12 +35,12 @@
           a-button(type="link" style="width: 100%; margin-top: 0" @click="gotoLogin") 已有账号？前往登陆
       a-modal(v-model:visible="touModalVisible" title="WhistleFarm 免责声明" :footer="null")
         ol
-          li 任何点击注册并使用微哨农场提供服务的个体，都视为已阅读并同意本协议。
+          li 任何点击注册并使用Fightening提供服务的个体，都视为已阅读并同意本协议。
           li 凡以任何方式登陆本网站或直接、间接使用本网站提供的功能者，视为自愿接受本协议的约束。
-          li 微哨农场仅作为学习 <code>ASP.NET</code>、<code>EFCore</code> 等框架的产物，不具有任何实际意义，仅供学习、参考、交流之用。
-          li 微哨农场提供的服务仅用于测试 <code>ASP.NET</code>、<code>EFCore</code> 等框架，不具有任何实用价值。
-          li 在法律允许的范围内，微哨农场及其开发者不承担用户或任何人士就使用或未能使用本网站所提供的功能、信息、任何链接或项目所引致的任何直接、间接、附带、从属、特殊、惩罚性或惩戒性的损害赔偿（包括但不限于收益、预期利润的损失或失去的业务、未实现预期的节省）和责任。
-          li 本协议最终解释权由微哨农场所有。
+          li Fightening仅作为学习 <code>ASP.NET</code>、<code>EFCore</code> 等框架的产物，不具有任何实际意义，仅供学习、参考、交流之用。
+          li Fightening提供的服务仅用于测试 <code>ASP.NET</code>、<code>EFCore</code> 等框架，不具有任何实用价值。
+          li 在法律允许的范围内，Fightening及其开发者不承担用户或任何人士就使用或未能使用本网站所提供的功能、信息、任何链接或项目所引致的任何直接、间接、附带、从属、特殊、惩罚性或惩戒性的损害赔偿（包括但不限于收益、预期利润的损失或失去的业务、未实现预期的节省）和责任。
+          li 本协议最终解释权由Fightening所有。
 </template>
 
 <script>
@@ -67,6 +67,7 @@ export default {
         email: '',
         password: '',
         passwordRepeat: '',
+        phone: '',
         inviCode: '',
       },
       touModalVisible: false,
@@ -74,12 +75,12 @@ export default {
   },
   head() {
     return {
-      title: 'WhistleFarm - 注册',
+      title: 'Flightening - 注册',
     }
   },
   mounted() {
     if (this.$auth.loggedIn) {
-      this.$router.push('/admin')
+      this.$router.push('/home')
     }
   },
   methods: {
@@ -105,11 +106,11 @@ export default {
       }
 
       this.$axios
-        .post('https://api.farm.sheey.moe/auth/register', {
+        .post('https://localhost:8080/v1/auth.signup', {
           username: this.formState.userName,
           password: this.formState.password,
           email: this.formState.email,
-          inviCode: this.formState.inviCode,
+          phone: this.formState.phone,
         })
         .then((res) => {
           message.success('注册成功, 3 秒后跳转登录页面')
