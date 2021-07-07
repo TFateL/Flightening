@@ -22,11 +22,6 @@
             template(slot="prefix")
                 lock-outlined
           span.tip 再输一遍
-        a-form-item(name="password" has-feedback)
-          a-input.invitation-code-input(placeholder="邀请码" v-model:value="formState.inviCode" size="large")
-            template(slot="prefix")
-                ContainerOutlined
-          span.tip 暂时开放注册，可以不填
         a-form-item
           a-button(type="primary" style="width: 100%;" size="large" @click="register") 注册
           .tou-wrap(style="color: #aaa; text-align: center;     line-height: normal;")
@@ -35,12 +30,12 @@
           a-button(type="link" style="width: 100%; margin-top: 0" @click="gotoLogin") 已有账号？前往登陆
       a-modal(v-model:visible="touModalVisible" title="WhistleFarm 免责声明" :footer="null")
         ol
-          li 任何点击注册并使用Fightening提供服务的个体，都视为已阅读并同意本协议。
+          li 任何点击注册并使用Flightening提供服务的个体，都视为已阅读并同意本协议。
           li 凡以任何方式登陆本网站或直接、间接使用本网站提供的功能者，视为自愿接受本协议的约束。
-          li Fightening仅作为学习 <code>ASP.NET</code>、<code>EFCore</code> 等框架的产物，不具有任何实际意义，仅供学习、参考、交流之用。
-          li Fightening提供的服务仅用于测试 <code>ASP.NET</code>、<code>EFCore</code> 等框架，不具有任何实用价值。
-          li 在法律允许的范围内，Fightening及其开发者不承担用户或任何人士就使用或未能使用本网站所提供的功能、信息、任何链接或项目所引致的任何直接、间接、附带、从属、特殊、惩罚性或惩戒性的损害赔偿（包括但不限于收益、预期利润的损失或失去的业务、未实现预期的节省）和责任。
-          li 本协议最终解释权由Fightening所有。
+          li Flightening仅作为学习 <code>ASP.NET</code>、<code>EFCore</code> 等框架的产物，不具有任何实际意义，仅供学习、参考、交流之用。
+          li Flightening提供的服务仅用于测试 <code>ASP.NET</code>、<code>EFCore</code> 等框架，不具有任何实用价值。
+          li 在法律允许的范围内，Flightening及其开发者不承担用户或任何人士就使用或未能使用本网站所提供的功能、信息、任何链接或项目所引致的任何直接、间接、附带、从属、特殊、惩罚性或惩戒性的损害赔偿（包括但不限于收益、预期利润的损失或失去的业务、未实现预期的节省）和责任。
+          li 本协议最终解释权由Flightening所有。
 </template>
 
 <script>

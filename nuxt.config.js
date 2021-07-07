@@ -64,7 +64,7 @@ export default {
         },
         endpoints: {
           login: {
-            url: 'https://localhost:8080/v1/auth/signin',
+            url: 'http://localhost:8080/v1/auth/signin',
             method: 'post',
           },
           logout: false,

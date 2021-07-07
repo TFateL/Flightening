@@ -1,42 +1,52 @@
 <template lang="pug">
-  a-card.searchMain
-    .serchLine
-      a-row()
-        a-col(:span="8") 出发地点
-          a-select.origin-city(show-search
-                               placeholder="Select a person"
-                               option-filter-prop="children"
-                               :filter-option="filterOption"
-                               @focus="handleFocus"
-                               @blur="handleBlur"
-                               @change="handleChange"
-                               )
-            a-select-option(v-for="i in this.cities" :key="i.id" :value="i.name") {{ i.name }}
-        a-col(:span="1")
-          h1.exchange 到达
-        a-col(:span="8") 达到地点
-          a-select.dest-city(show-search 
-                             placeholder="Select a person"
-                             option-filter-prop="children"
-                             :filter-option="filterOption"
-                             @focus="handleFocus"
-                             @blur="handleBlur"
-                             @change="handleChange"
-                             )
-            a-select-option(v-for="i in this.cities" :key="i.id" :value="i.name") {{ i.name }}
-    .timeSelect
-      a-date-picker(@change="onChange")
-        a-icon(slot="suffixIcon" type="simle")
-    a-button.serchButton(type="primay") 搜索
+  div
+    //- Header
+    //- MainLayout
+    a-card.searchMain
+      .serchLine
+        a-row()
+          a-col(:span="8") 出发地点
+            a-select.origin-city(show-search
+                                placeholder="Select a person"
+                                option-filter-prop="children"
+                                :filter-option="filterOption"
+                                @focus="handleFocus"
+                                @blur="handleBlur"
+                                @change="handleChange"
+                                )
+              a-select-option(v-for="i in this.cities" :key="i.id" :value="i.name") {{ i.name }}
+          a-col(:span="1")
+            h1.exchange 到达
+          a-col(:span="8") 达到地点
+            a-select.dest-city(show-search 
+                              placeholder="Select a person"
+                              option-filter-prop="children"
+                              :filter-option="filterOption"
+                              @focus="handleFocus"
+                              @blur="handleBlur"
+                              @change="handleChange"
+                              )
+              a-select-option(v-for="i in this.cities" :key="i.id" :value="i.name") {{ i.name }}
+      .timeSelect
+        a-date-picker(@change="onChange")
+          a-icon(slot="suffixIcon" type="simle")
+      a-button.serchButton(type="primay" @click="gotoShifts") 搜索
+    //- Footer
 </template>
 
 <script>
+// import { Header } from '@layouts/Header'
+// import { MainLayout } from '@layouts/MainLayout'
+// import { Footer } from '@components/Footer'
 export default {
-  components: {},
   data() {
     return {
       cities: [],
-      userInfo: '',
+      userInfo: {
+        phone: '',
+        username: '',
+        email: '',
+      },
     }
   },
   mounted() {
@@ -44,14 +54,15 @@ export default {
       this.cities = res.data.result
     })
     this.$axios.get('http://localhost:8080/v1/user/me').then((res) => {
-      console.log(res.msg)
-      console.log('1111')
+      this.userInfo.username = res.data.data.username
+      this.userInfo.email = res.data.data.email
+      this.userInfo.phone = res.data.data.phone
     })
   },
   methods: {
-    handleFocus() {},
-    handleBlur() {},
-    handleChange(value) {},
+    gotoShifts() {
+      this.$router.push('/shifts')
+    },
     filterOption(input, option) {
       return option.componentOptions.children[0].text.includes(input)
     },

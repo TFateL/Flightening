@@ -13,7 +13,6 @@
                 lock-outlined
         a-form-item(ref="rememberme")
           a-checkbox(v-model:checked="formState.rememberme" style="float: left") 记住我
-          a(style="float: right; margin-right: 0") 忘记密码
         a-form-item
           a-button(type="primary" style="width: 100%; margin-top: 20px" size="large" :disabled="!loginButtonEnabled" @click="login" :loading="loading") 登陆
           a-button(type="link" style="width: 100%; margin-top: 0" @click="gotoRegister") 注册账号
