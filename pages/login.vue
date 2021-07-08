@@ -45,9 +45,9 @@ export default {
     }
   },
   mounted() {
-    if (this.$auth.loggedIn) {
-      this.$router.push('/home')
-    }
+    // if (this.$auth.loggedIn) {
+    //   this.$router.push('/home')
+    // }
   },
   methods: {
     gotoRegister() {
@@ -62,7 +62,6 @@ export default {
       if (this.formState.userName === '' || this.formState.password === '') {
         return
       }
-
       try {
         this.loading = true
         await this.$auth.loginWith('local', {
@@ -71,8 +70,7 @@ export default {
             password: this.formState.password,
           },
         })
-        // TODO
-        // this.$router.push('/admin')
+        this.$router.push('/home')
       } catch (e) {
         if (e.response && e.response.data) {
           message.error(e.response.msg)

@@ -1,6 +1,6 @@
 <template lang="pug">
   a-layout-content.mainlayout() 
-    div.box 
+    div.box
 </template>
 
 <style scoped>

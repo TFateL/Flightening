@@ -2,10 +2,24 @@
   a-layout
     Header
     a-layout-content.MainLayout()
-      div.box
-        p {{ userInfo.name }}
-        p {{ userInfo.email }}
-        p {{ userInfo.phone }}
+      .container(style="display: flex;")
+      div.box()
+        h1(style="font-weight: bold; margin: auto; padding: 28px") 个人信息
+        div.s2box(style="max-width: 300px; margin: 0 500px")
+          a-card.card.shadow
+            a-from-model-item(label="用户名" )
+            p 用户名：
+              a-input(disabled v-model="userInfo.name")
+            a-from-moedl-item(label="邮箱")
+            p email:
+              a-input(v-model="userInfo.email")
+            a-from-moedl-item(label="电话号码")
+            p 电话:
+              a-input(v-model="userInfo.phone")
+          div(style="display: oinline-block; margin: 0 100px;")
+          a-form-item
+          div(style="display: oinline-block; margin: 0 100px;")
+            a-button(type="primary" style="width: 100%;" size="large" @click="modifyUserInfo(userInfo.email, userInfo.phone)") 确认修改
     Footer
 </template>
 
@@ -40,8 +54,25 @@ export default {
         this.userInfo.phone = res.data.data.phone
       })
     },
-    modifyUserInfo() {
-      this.$axios.put('http://localhost:8080/v1/user/me').then((res) => {})
+    modifyUserInfo(modifiedEmail, modifiedPhone) {
+      this.$axios
+        .put('http://localhost:8080/v1/user/me', {
+          email: modifiedEmail,
+          phone: modifiedPhone,
+        })
+        .then((res) => {
+          this.$message({
+            message: '已保存',
+            type: 'success',
+          })
+          this.$router.push('/user')
+        })
+        .catch((erro) => {
+          this.$message({
+            message: '保存失败',
+            type: 'error',
+          })
+        })
     },
   },
 }
@@ -67,5 +98,16 @@ export default {
   margin: 100px;
   min-width: 900px;
   min-height: 500px;
+}
+
+.sbox {
+  background: rgb(255, 255, 255);
+  min-width: 400px;
+  min-height: 350px;
+}
+.s2box {
+  background: rgb(255, 255, 255);
+  min-width: 400px;
+  min-height: 350px;
 }
 </style>
