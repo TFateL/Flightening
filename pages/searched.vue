@@ -12,7 +12,7 @@
             a-menu-item(key="3" :span="2") 我的订单
     a-layout-content.MainLayout()
       div.box
-        SearchMain
+        shiftsInfo
     a-layout-footer.footer(style="text-align: center")
       h1 Flightening
       p.contrib Created by sheey & TLynfer & Jademing with ❤️
@@ -29,9 +29,14 @@ export default {
     }
   },
   mounted() {
-    if (!this.$auth.loggedIn) {
-      this.$router.push('/login')
-    }
+    this.$axios.get('http://localhost:8080/v1/airline/cities').then((res) => {
+      this.cities = res.data.result
+    })
+  },
+  methods: {
+    filterOption(input, option) {
+      return option.componentOptions.children[0].text.includes(input)
+    },
   },
 }
 </script>

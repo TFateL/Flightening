@@ -63,7 +63,6 @@ export default {
         password: '',
         passwordRepeat: '',
         phone: '',
-        inviCode: '',
       },
       touModalVisible: false,
     }
