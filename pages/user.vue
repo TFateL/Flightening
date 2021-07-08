@@ -7,9 +7,6 @@
         p {{ userInfo.email }}
         p {{ userInfo.phone }}
     Footer
-  //- a-form(:model="formState" :lable-col="labelCol" :wrapper-col="wrapperCol")
-  //-   a-form-item(lable="昵称")
-  //-     a-input（v-model:value="userInfo.name") 
 </template>
 
 <script>
@@ -34,7 +31,7 @@ export default {
       this.$router.push('/user')
     },
     gotoOrder() {
-      this.$router.push('/order')
+      this.$router.push('/orders')
     },
     fetchUserInfo() {
       this.$axios.get('http://localhost:8080/v1/user/me').then((res) => {
@@ -44,7 +41,7 @@ export default {
       })
     },
     modifyUserInfo() {
-      this.$axios.put('http//localhost:8080/v1/user/me').then((res) => {})
+      this.$axios.put('http://localhost:8080/v1/user/me').then((res) => {})
     },
   },
 }

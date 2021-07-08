@@ -1,21 +1,10 @@
 <template lang="pug">
   a-layout
-    a-layout-header(:style="{ position: 'fixed', zIndex: 1, width: '100%' }") 
-      div.logo
-      a-menu(theme="dark" mode="horizontal" :style="{ lineHeight: '64px' }")
-        a-row
-          a-col(:span="2")
-            a-menu-item(key="1" :span="2") 首页
-          a-col(:span="2")
-            a-menu-item(key="2" :span="2") 个人中心
-          a-col(:span="2")
-            a-menu-item(key="3" :span="2") 我的订单
+    Header
     a-layout-content.MainLayout()
       div.box
         shiftsInfo
-    a-layout-footer.footer(style="text-align: center")
-      h1 Flightening
-      p.contrib Created by sheey & TLynfer & Jademing with ❤️
+    Footer
 </template>
 
 <script>

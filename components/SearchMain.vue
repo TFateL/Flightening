@@ -18,7 +18,7 @@
             a-select-option(v-for="i in this.cities" :key="i.id" :value="i.name") {{ i.name }}
       a-date-picker(v-model="tra_time" placeholder="出发日期")
         a-icon(slot="suffixIcon" type="simle")
-      a-button.serchButton(type="primay" @click="gotoShifts(origin_city, dest_city, tra_time._d)") 搜索
+      a-button.serchButton(type="primay" @click="gotoShifts(origin_city, dest_city, tra_time)") 搜索
 </template>
 
 <script>

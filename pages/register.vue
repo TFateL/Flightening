@@ -73,9 +73,9 @@ export default {
     }
   },
   mounted() {
-    if (this.$auth.loggedIn) {
-      this.$router.push('/home')
-    }
+    // if (this.$auth.loggedIn) {
+    //   this.$router.push('/home')
+    // }
   },
   methods: {
     gotoLogin() {
@@ -100,7 +100,7 @@ export default {
       }
 
       this.$axios
-        .post('https://localhost:8080/v1/auth.signup', {
+        .post('http://localhost:8080/v1/auth.signup', {
           username: this.formState.userName,
           password: this.formState.password,
           email: this.formState.email,
