@@ -17,7 +17,7 @@ export default {
       dest: '',
     }
   },
-  mounted() {
+  created() {
     if (!this.$auth.loggedIn) {
       this.$router.push('/login')
     }

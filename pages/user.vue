@@ -24,6 +24,8 @@
 </template>
 
 <script>
+import { message } from 'ant-design-vue'
+
 export default {
   data() {
     return {
@@ -61,17 +63,10 @@ export default {
           phone: modifiedPhone,
         })
         .then((res) => {
-          this.$message({
-            message: '已保存',
-            type: 'success',
-          })
-          this.$router.push('/user')
+          message.success('保存成功')
         })
         .catch((erro) => {
-          this.$message({
-            message: '保存失败',
-            type: 'error',
-          })
+          message.erro('保存失败')
         })
     },
   },
